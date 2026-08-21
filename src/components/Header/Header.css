@@ -1,0 +1,40 @@
+.title {
+  display: flex;
+  align-items: baseline; 
+  justify-content: center;  /* keeps both scripts sitting on the same text baseline */
+  gap: 0.6em;
+  white-space: nowrap;     /* forces single line */
+  background: #161513;
+  padding: 2rem 3rem;
+  margin: 0;
+}
+
+.bn {
+  font-family: 'Tiro Bangla', serif;
+  font-size: 4.0rem;
+  font-weight: 400;
+  color: #E4DCC8;
+  letter-spacing: 0;       /* Bengali doesn't want extra tracking, it distorts conjuncts */
+}
+
+.divider {
+  font-size: 1.4rem;
+  color: #8C887E;          /* dust grey, quiet separator */
+  font-weight: 300;
+}
+
+.en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.0rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;  /* wide tracking = the "small caps credit line" feel */
+  text-transform: uppercase;
+  color: #E4DCC8;
+}
+.underline-word {
+  background-image: linear-gradient(#B8482E, #B8482E);
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: 0 100%;
+  padding-bottom: 0.2em;
+}

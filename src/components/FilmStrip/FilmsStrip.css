@@ -1,0 +1,187 @@
+.reel {
+  --soot: #161513;
+  --bone: #e4dcc8;
+  --dust: #8c887e;
+  --ochre: #b8482e;
+
+  background: var(--soot);
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+}
+
+.reel__frames {
+  display: flex;
+  align-items: stretch;
+  margin: 0.4rem 0;
+}
+
+.reel__frame {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Unequal widths: left & right are half-size relative to the middle */
+.reel__frame--poster {
+  flex: 1;
+}
+.reel__frame--desc {
+  flex: 2;
+}
+.reel__frame--credits {
+  flex: 1;
+}
+
+.reel__gate {
+  background: var(--bone);
+  border: 3px solid var(--soot);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+
+/* Poster keeps its native 480x640 (3:4) proportion */
+.reel__gate--poster {
+  aspect-ratio: 480 / 640;
+  flex: 1;
+  align-items: stretch;
+  justify-content: stretch;
+}
+.reel__gate--poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+}
+
+/* Middle & right frames match the poster's height, not its aspect ratio,
+           so the whole reel reads as one strip */
+.reel__gate--desc,
+.reel__gate--credits {
+  aspect-ratio: auto;
+  flex: 1;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1.1rem 1.2rem;
+}
+
+.reel__gate-empty {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.reel__desc-content {
+  color: var(--soot);
+}
+.reel__desc-title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 4rem;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.6rem 0;
+}
+.reel__desc-text {
+  font-family: "Lora", serif;
+  font-size: 1.2rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.reel__credits-list {
+  width: 100%;
+  margin: 0;
+}
+.reel__credit-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.85rem;
+}
+.reel__credit-row:last-child {
+  margin-bottom: 0;
+}
+.reel__credit-row dt {
+  font-family: "Courier New", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dust);
+  margin: 0 0 0.15rem 0;
+}
+.reel__credit-row dd {
+  font-family: "Lora", serif;
+  font-size: 0.9rem;
+  color: var(--soot);
+  margin: 0;
+}
+
+.reel__caption {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-family: "Courier New", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dust);
+}
+
+.reel__perf {
+  width: 14px;
+  flex-shrink: 0;
+  background: var(--soot);
+  position: relative;
+}
+.reel__perf::before,
+.reel__perf::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 8px;
+  background: var(--bone);
+  border-radius: 1px;
+}
+.reel__perf::before {
+  top: 8px;
+}
+.reel__perf::after {
+  bottom: 8px;
+}
+
+.reel__play-btn {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ochre);
+  color: var(--bone);
+  border: none;
+  padding: 0.55rem 1.6rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.reel__play-btn:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 720px) {
+  .reel__frames {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .reel__perf {
+    display: none;
+  }
+  .reel__gate--poster {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+}

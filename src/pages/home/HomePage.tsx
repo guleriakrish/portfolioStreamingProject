@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router";
+import Header from "../../components/Header/Header";
 
 function HomePage() {
   const navigate = useNavigate();
 
   return (
-    <>
-      <h2>Here comes your money</h2>
+    <div>
+      <title>Old Indian Cinema</title>
+      <Header/>
       <button
         onClick={() => {
           navigate("/testing");
@@ -13,7 +15,7 @@ function HomePage() {
       >
         Testing
       </button>
-    </>
+    </div>
   );
 }
 

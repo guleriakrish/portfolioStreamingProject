@@ -1,5 +1,5 @@
 import "./App.css";
-import VideoPlayer from "./components/VideoPlayer";
+import Testing from "./pages/Testing/Testing";
 import { Routes, Route } from "react-router";
 import HomePage from "./pages/home/HomePage";
 
@@ -8,7 +8,7 @@ function App() {
     <>
       <Routes>
         <Route index element={<HomePage />} />
-        <Route path="/testing" element={<VideoPlayer />} />
+        <Route path="/testing" element={<Testing />} />
       </Routes>
     </>
   );
