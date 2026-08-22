@@ -32,7 +32,7 @@ function FilmGrid() {
           year={movie.year}
           description={movie.synopsis}
           credits={movie.credits}
-          onPlay={() => navigate("/watch/${movie.slug}")}
+          onPlay={() => navigate(`/watch/${movie.slug}`)}
         />
       ))}
     </div>
