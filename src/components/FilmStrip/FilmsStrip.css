@@ -1,12 +1,27 @@
-.reel {
+:root {
   --soot: #161513;
   --bone: #e4dcc8;
   --dust: #8c887e;
   --ochre: #b8482e;
+}
 
+.reel {
   background: var(--soot);
   padding: 0.6rem 1rem;
   border-radius: 4px;
+}
+
+.reel__sprocket-row {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 0.4rem;
+}
+
+.reel__sprocket-hole {
+  width: 8px;
+  height: 10px;
+  background: var(--bone);
+  border-radius: 1px;
 }
 
 .reel__frames {
@@ -21,7 +36,6 @@
   min-width: 0;
 }
 
-/* Unequal widths: left & right are half-size relative to the middle */
 .reel__frame--poster {
   flex: 1;
 }
@@ -41,7 +55,6 @@
   display: flex;
 }
 
-/* Poster keeps its native 480x640 (3:4) proportion */
 .reel__gate--poster {
   aspect-ratio: 480 / 640;
   flex: 1;
@@ -55,8 +68,6 @@
   filter: grayscale(1) contrast(1.05);
 }
 
-/* Middle & right frames match the poster's height, not its aspect ratio,
-           so the whole reel reads as one strip */
 .reel__gate--desc,
 .reel__gate--credits {
   aspect-ratio: auto;
@@ -74,14 +85,49 @@
 
 .reel__desc-content {
   color: var(--soot);
+  width: 100%;
 }
+
+.reel__title-block {
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
 .reel__desc-title {
+  margin: 0;
+}
+
+/* English title */
+.reel__desc-title--en {
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
   font-size: 4rem;
   letter-spacing: 0.03em;
-  margin: 0 0 0.6rem 0;
 }
+
+/* Bengali title — underlined in ochre-red */
+.reel__desc-title--bn {
+  font-family: "Tiro Bangla", serif;
+  font-weight: 400;
+  font-size: 4rem;
+  letter-spacing: 0;
+  display: inline-block;
+  border-bottom: 2px solid var(--ochre);
+  padding-bottom: 0.15em;
+}
+
+/* Year — plain, no underline, follows both titles */
+.reel__desc-year {
+  font-family: "Courier New", monospace;
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--dust);
+}
+
 .reel__desc-text {
   font-family: "Lora", serif;
   font-size: 1.2rem;
@@ -167,7 +213,6 @@
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
-
 .reel__play-btn:hover {
   opacity: 0.85;
 }

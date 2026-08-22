@@ -1,20 +1,24 @@
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import Header from "../../components/Header/Header";
+import FilmGrid from "../../components/FilmGrid/FilmGrid";
 
 function HomePage() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+    
 
   return (
+
     <div>
       <title>Old Indian Cinema</title>
       <Header/>
-      <button
+      <FilmGrid/>
+      {/* <button
         onClick={() => {
           navigate("/testing");
         }}
       >
         Testing
-      </button>
+      </button> */}
     </div>
   );
 }

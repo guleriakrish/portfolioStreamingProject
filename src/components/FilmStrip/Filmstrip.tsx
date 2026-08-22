@@ -1,5 +1,5 @@
 import React from "react";
-import "./FilmsStrip.css"
+import "./FilmsStrip.css";
 
 export interface CreditLine {
   role: string; // e.g. "Director", "Producer", "Music"
@@ -10,8 +10,10 @@ export interface FilmReelCardProps {
   /** Left frame: vertical poster image (native size 480x640) */
   posterSrc?: string;
   posterAlt?: string;
-  /** Middle frame: short synopsis */
-  title?: string;
+  /** Middle frame: titles + short synopsis */
+  title_en?: string;
+  title_bn?: string;
+  year?: number | string;
   description?: string;
   /** Right frame: crew/cast credits */
   credits?: CreditLine[];
@@ -28,7 +30,9 @@ export interface FilmReelCardProps {
 const FilmReelCard: React.FC<FilmReelCardProps> = ({
   posterSrc,
   posterAlt = "",
-  title,
+  title_en,
+  title_bn,
+  year,
   description,
   credits = [],
   className,
@@ -52,12 +56,26 @@ const FilmReelCard: React.FC<FilmReelCardProps> = ({
 
         <div className="reel__perf" />
 
-        {/* MIDDLE — description (largest) */}
+        {/* MIDDLE — titles + description (largest) */}
         <div className="reel__frame reel__frame--desc">
           <div className="reel__gate reel__gate--desc">
-            {title || description ? (
+            {title_en || title_bn || description ? (
               <div className="reel__desc-content">
-                {title && <h3 className="reel__desc-title">{title}</h3>}
+                {(title_en || title_bn) && (
+                  <div className="reel__title-block">
+                    {title_en && (
+                      <h3 className="reel__desc-title reel__desc-title--en">
+                        {title_en}
+                      </h3>
+                    )}
+                    {title_bn && (
+                      <h4 className="reel__desc-title reel__desc-title--bn">
+                        {title_bn}
+                      </h4>
+                    )}
+                    {year && <span className="reel__desc-year">{year}</span>}
+                  </div>
+                )}
                 {description && (
                   <p className="reel__desc-text">{description}</p>
                 )}
@@ -94,31 +112,15 @@ const FilmReelCard: React.FC<FilmReelCardProps> = ({
       </div>
 
       <SprocketRow />
-
-
     </div>
   );
 };
 
 /** Top/bottom sprocket-hole strip */
 const SprocketRow: React.FC = () => (
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "space-evenly",
-      padding: "0 0.4rem",
-    }}
-  >
+  <div className="reel__sprocket-row">
     {Array.from({ length: 28 }).map((_, i) => (
-      <span
-        key={i}
-        style={{
-          width: "8px",
-          height: "10px",
-          background: "#E4DCC8",
-          borderRadius: "1px",
-        }}
-      />
+      <span key={i} className="reel__sprocket-hole" />
     ))}
   </div>
 );
