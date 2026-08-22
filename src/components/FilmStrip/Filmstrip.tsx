@@ -13,11 +13,12 @@ export interface FilmReelCardProps {
   /** Middle frame: titles + short synopsis */
   title_en?: string;
   title_bn?: string;
-  year?: number | string;
+  year?:number | string;
   description?: string;
   /** Right frame: crew/cast credits */
   credits?: CreditLine[];
   className?: string;
+  onPlay?: () => void;
 }
 
 /**
@@ -32,10 +33,10 @@ const FilmReelCard: React.FC<FilmReelCardProps> = ({
   posterAlt = "",
   title_en,
   title_bn,
-  year,
   description,
   credits = [],
   className,
+  onPlay,
 }) => {
   return (
     <div className={`reel ${className ?? ""}`}>
@@ -73,7 +74,6 @@ const FilmReelCard: React.FC<FilmReelCardProps> = ({
                         {title_bn}
                       </h4>
                     )}
-                    {year && <span className="reel__desc-year">{year}</span>}
                   </div>
                 )}
                 {description && (
@@ -83,7 +83,9 @@ const FilmReelCard: React.FC<FilmReelCardProps> = ({
             ) : (
               <span className="reel__gate-empty" />
             )}
-            <button className="reel__play-btn">Play</button>
+            <button className="reel__play-btn" onClick={onPlay}>
+              Play
+            </button>
           </div>
 
           <div className="reel__caption">Synopsis</div>

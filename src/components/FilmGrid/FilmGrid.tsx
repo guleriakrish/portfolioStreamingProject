@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { fetchMovies} from "../api/api";
+import { fetchMovies } from "../api/api";
 import type { Movie } from "../api/api";
 import FilmReelCard from "../FilmStrip/Filmstrip";
+import { useNavigate } from "react-router";
 
 function FilmGrid() {
+  const navigate = useNavigate();
+
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -29,6 +32,7 @@ function FilmGrid() {
           year={movie.year}
           description={movie.synopsis}
           credits={movie.credits}
+          onPlay={() => navigate("/watch/${movie.slug}")}
         />
       ))}
     </div>
