@@ -23,7 +23,7 @@ function FilmGrid() {
       {movies.map((movie) => (
         <FilmReelCard
           key={movie.slug}
-          posterSrc={movie.poster_url}
+          posterSrc={movie.card_url}
           title_en={movie.title_en}
           title_bn={movie.title_bn}
           year={movie.year}
